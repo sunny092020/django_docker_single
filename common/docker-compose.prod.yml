@@ -21,7 +21,6 @@ services:
       - media_volume:/home/app/web/mediafiles
     ports:
       - 80:80
-      - 3000:3000
     depends_on:
       - web
 

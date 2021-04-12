@@ -2,3 +2,6 @@
 
 $ cd django_docker_single  
 $ ./build.sh <PATH_TO_DJANGO_PROJECT>  
+$ ./code  <PATH_TO_DJANGO_PROJECT>   <NAME_OF_APP>  
+
+NAME_OF_APP=sam or oms  

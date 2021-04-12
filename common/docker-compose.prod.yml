@@ -5,7 +5,7 @@ services:
     build:
       context: ../${APP_DIR}
       dockerfile: ./Dockerfile.prod
-    command: gunicorn main.wsgi:application --bind 0.0.0.0:8000 --reload
+    command: gunicorn ${MAIN_MODULE}.wsgi:application --bind 0.0.0.0:8000 --reload
     volumes:
       - static_volume:/home/app/web/staticfiles
       - media_volume:/home/app/web/mediafiles

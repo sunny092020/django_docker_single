@@ -21,6 +21,10 @@ RUN mkdir -p $HOME \
     mkdir $APP_HOME/staticfiles \
     mkdir $APP_HOME/mediafiles
 
+RUN git clone https://github.com/wolfcw/libfaketime.git
+WORKDIR /libfaketime/src
+RUN make install
+
 WORKDIR $APP_HOME
 
 COPY ./requirements.txt $APP_HOME

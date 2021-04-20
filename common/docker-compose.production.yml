@@ -27,10 +27,4 @@ services:
 volumes:
   static_volume:
   media_volume:
-
-# comment this in production
-# ↓
-#networks:
-#  default:
-#    external:
-#      name: sa_db_nw
+ 

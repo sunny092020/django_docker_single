@@ -20,7 +20,7 @@ services:
       - static_volume:/home/app/web/staticfiles
       - media_volume:/home/app/web/mediafiles
     ports:
-      - 80:80
+      - 81:81
     depends_on:
       - web
 
@@ -30,7 +30,7 @@ volumes:
 
 # comment this in production
 # ↓
-networks:
-  default:
-    external:
-      name: sa_db_nw
+#networks:
+#  default:
+#    external:
+#      name: sa_db_nw

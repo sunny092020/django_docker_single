@@ -2,9 +2,10 @@
 
 $ cd django_docker_single  
 
-$ ./build.sh <PATH_TO_DJANGO_PROJECT>  
+$ ./build.sh <PATH_TO_DJANGO_PROJECT> <PRODUCTION/DEVELOPMENT>
 for exp:  
-$ ./build.sh ../smart_assist/smart_assist_maintenance/  
+$ ./build.sh ../smart_assist/smart_assist_maintenance/ development
+$ ./build.sh ../smart_assist/smart_assist_maintenance/ production
 
 you will see this output  
 ```

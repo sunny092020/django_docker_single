@@ -6,5 +6,4 @@ cp web/Dockerfile.prod $APP_DIR
 cp web/entrypoint.prod.sh $APP_DIR
 cp .dockerignore $APP_DIR
 
-export MAIN_MODULE=smart_assist_maintenance
-APP_DIR=$APP_DIR docker-compose -f common/docker-compose.prod.yml up --build 
+APP_DIR=$APP_DIR docker-compose --env-file ./common/.env.prod -f common/docker-compose.prod.yml up --build 

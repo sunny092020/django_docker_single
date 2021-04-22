@@ -2,7 +2,15 @@
 
 $ cd django_docker_single  
 
-$ ./build.sh <PATH_TO_DJANGO_PROJECT>  
+$ vi common/.env.prod
+```Edit 
+MAIN_MODULE= <MAIN_MODULE_NAME>
+for exp:
+   MAIN_MODULE=main for order_system
+   MAIN_MODULE=smart_assist_maintenance for smart_assist_maintenance
+```
+
+$ ./build.sh <PATH_TO_DJANGO_PROJECT> <PRODUCTION/DEVELOPMENT>
 for exp:  
 $ ./build.sh ../smart_assist/smart_assist_maintenance/  
 

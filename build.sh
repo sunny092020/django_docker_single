@@ -2,8 +2,8 @@
 
 APP_DIR=$1
 
-cp web/Dockerfile.prod $APP_DIR
-cp web/entrypoint.prod.sh $APP_DIR
 cp .dockerignore $APP_DIR
 
-APP_DIR=$APP_DIR docker-compose --env-file ./common/.env.prod -f common/docker-compose.prod.yml up --build 
+cp web/Dockerfile.$ENV $APP_DIR/Dockerfile.prod
+cp web/entrypoint.$ENV.sh $APP_DIR/entrypoint.prod.sh
+APP_DIR=$APP_DIR docker-compose --env-file ./common/.env.prod -f common/docker-compose.$ENV.yml up --build 

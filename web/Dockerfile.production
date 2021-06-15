@@ -10,7 +10,8 @@ RUN apt-get -y update && \
         fonts-ipafont-gothic \
         fonts-ipafont-mincho \
         fonts-takao-mincho \
-        fonts-takao
+        fonts-takao \
+        postgresql-client
 
 # create directory for the app user
 ENV HOME=/home/app

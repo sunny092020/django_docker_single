@@ -4,7 +4,7 @@ services:
   web:
     build:
       context: ../${APP_DIR}
-      dockerfile: ./Dockerfile.prod
+      dockerfile: ./Dockerfile
     command: gunicorn ${MAIN_MODULE}.wsgi:application --bind 0.0.0.0:8000 --reload
     volumes:
       - static_volume:/home/app/web/staticfiles

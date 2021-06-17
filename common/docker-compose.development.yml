@@ -11,6 +11,9 @@ services:
       - media_volume:/home/app/web/mediafiles
     expose:
       - 8000
+    networks:
+      default:
+        ipv4_address: 10.1.10.31
 
   nginx:
     build: ../nginx
@@ -21,6 +24,9 @@ services:
       - 81:80
     depends_on:
       - web
+    networks:
+      default:
+        ipv4_address: 10.1.10.32
 
 volumes:
   static_volume:

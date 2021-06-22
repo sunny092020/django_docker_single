@@ -1,16 +1,5 @@
-FROM python:3
+FROM python:3 AS builder
 ENV PYTHONUNBUFFERED=1
-
-RUN apt-get -y update && \
-    apt-get -y install --no-install-recommends netcat \
-        gettext \
-        poppler-utils \
-        wkhtmltopdf \
-        fonts-ipafont-gothic \
-        fonts-ipafont-mincho \
-        fonts-takao-mincho \
-        fonts-takao && \
-    rm -rf /var/lib/apt/lists/*
 
 # create directory for the app user
 ENV HOME=/home/app
@@ -29,6 +18,29 @@ WORKDIR $APP_HOME
 
 COPY ./requirements.txt $APP_HOME
 RUN pip install -r requirements.txt
+
+FROM python:3-slim
+
+RUN apt-get -y update && \
+    apt-get -y install --no-install-recommends \
+        gettext \
+        poppler-utils \
+        wkhtmltopdf \
+        fonts-ipafont-gothic \
+        fonts-ipafont-mincho \
+        fonts-takao-mincho \
+        fonts-takao && \
+    rm -rf /var/lib/apt/lists/*
+
+# create directory for the app user
+ENV HOME=/home/app
+ENV APP_HOME=$HOME/web
+
+COPY --from=builder $HOME $HOME
+COPY --from=builder /usr/local/ /usr/local/
+
+RUN ldconfig /usr/local/lib
+WORKDIR $APP_HOME
 
 # copy entrypoint-prod.sh
 COPY ./entrypoint.sh $APP_HOME

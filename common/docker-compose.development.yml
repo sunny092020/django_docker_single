@@ -12,10 +12,13 @@ services:
       - ../${APP_DIR}:/home/app/web
     expose:
       - 8000
+    extra_hosts:
+      - db:10.5.0.1  
     networks:
       default:
         ipv4_address: 10.1.10.31
-
+      vpcbr:
+        ipv4_address: 10.5.0.7
   nginx:
     build: ../nginx
     volumes:
@@ -28,6 +31,8 @@ services:
     networks:
       default:
         ipv4_address: 10.1.10.32
+      vpcbr:
+        ipv4_address: 10.5.0.6
 
 volumes:
   static_volume:
@@ -37,3 +42,8 @@ networks:
   default:
     external:
       name: sa_db_nw
+  vpcbr:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.5.0.0/16
